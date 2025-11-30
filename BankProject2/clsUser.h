@@ -6,6 +6,7 @@
 #include <vector>
 #include "clsDate.h"
 #include <fstream>
+#include "clsUtil.h"
 
 using namespace std; 
 
@@ -30,7 +31,7 @@ private:
 		vector<string> LoginRegisterDataLine = clsString::Split(Line, Seperator); 
 		LoginRegisterRecord.DateTime = LoginRegisterDataLine[0]; 
 		LoginRegisterRecord.UserName = LoginRegisterDataLine[1]; 
-		LoginRegisterRecord.Password = LoginRegisterDataLine[2]; 
+		LoginRegisterRecord.Password = clsUtil::DecryptPassword(LoginRegisterDataLine[2]);  
 		LoginRegisterRecord.Permissions = stoi(LoginRegisterDataLine[3]);
 
 		return LoginRegisterRecord; 
@@ -43,7 +44,7 @@ private:
 		string RegisterRecord = "";
 		RegisterRecord += clsDate::GetSystemDateTimeString() + Seperator; 
 		RegisterRecord += UserName + Seperator;
-		RegisterRecord += Password + Seperator;
+		RegisterRecord += clsUtil::EncryptPassword(Password) + Seperator;
 		RegisterRecord += to_string(Permissions);
 
 		return RegisterRecord;
@@ -86,7 +87,7 @@ private:
 		vector<string> vUsers;
 		vUsers = clsString::Split(Line, Seperator);
 
-		return clsUser(enMode::UpdateMode, vUsers[0], vUsers[1], vUsers[2], vUsers[3],  vUsers[4], vUsers[5]
+		return clsUser(enMode::UpdateMode, vUsers[0], vUsers[1], vUsers[2], vUsers[3],  vUsers[4], clsUtil::DecryptPassword(vUsers[5])
 			, stoi(vUsers[6]));
 
 	}
@@ -98,9 +99,9 @@ private:
 		UserRecord += User.LastName + Seperator;
 		UserRecord += User.Email + Seperator;
 		UserRecord += User.Phone + Seperator;
-		UserRecord += User._UserName + Seperator;
-		UserRecord += User._Password + Seperator;
-		UserRecord += to_string(User._Permissions) ;
+		UserRecord += User.UserName + Seperator;
+		UserRecord += clsUtil::EncryptPassword(User.Password) + Seperator;
+		UserRecord += to_string(User.Permissions) ;
 
 		return UserRecord;
 	}
@@ -187,6 +188,11 @@ private:
 	static clsUser _GetEmptyUserObject()
 	{
 		return clsUser(enMode::EmptyMode, "", "", "", "", "", "", 0);
+	}
+
+	static string EnctyptedPassword(string Password)
+	{
+		clsUtil::EncryptPassword(Password);
 	}
 
 public:
@@ -449,5 +455,7 @@ public:
 		return vLoginRegisterRecord;
 	}
 
+
+	
 };
 

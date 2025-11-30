@@ -3,6 +3,7 @@
 #include <string>
 #include "clsString.h"
 #include "clsDate.h"
+#include <conio.h>
 
 class clsInputValidate
 {
@@ -161,5 +162,30 @@ public:
 		// Usage of std::ws will extract allthe whitespace character
 		getline(cin >> ws, S1);
 		return S1;
+	}
+
+	static string getPassword(string prompt = "\t\t\t\t\t\t  Enter Password? ")
+	{
+		string password;
+		char ch;
+
+		std::cout << prompt;
+
+		while ((ch = _getch()) != '\r') { // Enter key -> end
+			if (ch == '\b') {             // Backspace
+				if (!password.empty()) {
+					std::cout << "\b \b";
+					password.pop_back();
+				}
+			}
+			else {
+				password.push_back(ch);
+				std::cout << "*";
+			}
+		}
+
+		std::cout << std::endl;
+		return password;
+
 	}
 };

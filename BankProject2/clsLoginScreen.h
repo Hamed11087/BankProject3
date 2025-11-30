@@ -6,13 +6,16 @@
 #include "clsUser.h"
 #include"clsMainScreen.h"
 #include "Global.h"
+#include "clsInputValidate.h"
 #include "clsRegisterLogins.h" 
+
 
 class clsLoginScreen :protected clsScreen
 {
 
 
 private:
+
 
 	static bool _Login()
 	{
@@ -39,8 +42,10 @@ private:
 			cout << "\t\t\t\t\t\t  Enter Username? ";
 			cin >> UserName; 
 
-			cout << "\t\t\t\t\t\t  Enter Password? ";
-			cin >> Password;
+			/*cout << "\t\t\t\t\t\t  Enter Password? ";
+			cin >> Password;*/
+
+			Password = clsInputValidate::getPassword(); 
 
 			CurrentUser = clsUser::Find(UserName, Password);
 

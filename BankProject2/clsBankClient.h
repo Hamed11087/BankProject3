@@ -17,8 +17,25 @@ private:
 	float _AccountBalance;
 	bool _MakedForDelete = false;
 
+	struct stTransferRegisterRecord;
 
-	
+	static stTransferRegisterRecord _ConverTransferRegiterLineToRecord(string Line, string Seperator = "#//#")
+	{
+		stTransferRegisterRecord TransferRegisterRecord;
+
+		vector<string> TransferRegisterDataLine = clsString::Split(Line, Seperator);
+		TransferRegisterRecord.DateTime = TransferRegisterDataLine[0];
+		TransferRegisterRecord.SourceAccountNumber = TransferRegisterDataLine[1];
+		TransferRegisterRecord.DestinationAccountNumber = TransferRegisterDataLine[2];
+		TransferRegisterRecord.Amount = stoi(TransferRegisterDataLine[3]);
+		TransferRegisterRecord.SourceBalance = stoi(TransferRegisterDataLine[4]);
+		TransferRegisterRecord.DestinationBalance = stoi(TransferRegisterDataLine[5]);
+		TransferRegisterRecord.User = TransferRegisterDataLine[6]; 
+
+		return TransferRegisterRecord;
+
+	}
+
 
 	static clsBankClient _ConvertLineToClientObject(string Line, string Seperator = "#//#")
 	{
@@ -169,6 +186,19 @@ private:
 
 public:
 
+	struct stTransferRegisterRecord
+	{
+		string DateTime;
+		string SourceAccountNumber;
+		string  DestinationAccountNumber;
+		string User; 
+		float SourceBalance;
+		float  DestinationBalance;
+		float Amount;
+
+	};
+
+
 	clsBankClient(enMode Mode, string FirstName, string LastName, string Email, string Phone, string AccountNumber, string PinCode, float AccountBalance)
 		:clsPerson(FirstName, LastName, Email, Phone)
 	{
@@ -177,6 +207,7 @@ public:
 		_PinCode = PinCode;
 		_AccountBalance = AccountBalance;
 	}
+
 
 	bool IsEmpty()
 	{
@@ -411,6 +442,31 @@ public:
 		
 	 }
 
+	 static vector<stTransferRegisterRecord> GetTransferLogList()
+	 {
+		 vector<stTransferRegisterRecord>vLoginRegisterRecord;
+
+		 fstream MyFile;
+		 MyFile.open("TransferLog.txt", ios::in);
+
+		 if (MyFile.is_open())
+		 {
+			 string Line;
+
+			 stTransferRegisterRecord TransferRegisterRecord;
+
+			 while (getline(MyFile, Line))
+			 {
+				 TransferRegisterRecord = _ConverTransferRegiterLineToRecord(Line);
+
+				 vLoginRegisterRecord.push_back(TransferRegisterRecord);
+			 }
+
+			 MyFile.close();
+		 }
+
+		 return vLoginRegisterRecord;
+	 }
 	 
 
 };

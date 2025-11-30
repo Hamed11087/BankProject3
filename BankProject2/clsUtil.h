@@ -309,5 +309,25 @@ public:
 
         
     }
+
+    static string EncryptPassword(string Password, short EncryptionKey = 2)
+    {
+        for (int i = 0; i <= Password.length(); i++)
+        {
+            Password[i] = char((int)Password[i] + EncryptionKey);
+        }
+        return Password;
+    }
+
+
+    static string DecryptPassword(string Password, short EncryptionsKey = 2)
+    {
+        for (int i = 0; i <= Password.length(); i++)
+        {
+            Password[i] = char((int)Password[i] - EncryptionsKey);
+        }
+
+        return Password;
+    }
 };
 

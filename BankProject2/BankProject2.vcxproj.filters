@@ -28,6 +28,9 @@
     <Filter Include="Header Files\LogIn">
       <UniqueIdentifier>{4ac96bc1-ec18-4444-b7f8-8e396e12e988}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\CurrencyProgram">
+      <UniqueIdentifier>{64362b61-8ec8-40b4-b639-cc12b377d7b7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BankProject2.cpp">
@@ -118,6 +121,18 @@
     </ClInclude>
     <ClInclude Include="clsTransferScreen.h">
       <Filter>Header Files\TransactionsProgram</Filter>
+    </ClInclude>
+    <ClInclude Include="clsTransfersLogScreen.h">
+      <Filter>Header Files\TransactionsProgram</Filter>
+    </ClInclude>
+    <ClInclude Include="InterfaceCommunication.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="clsCurrency.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="clsCurrencyMainScreen.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
