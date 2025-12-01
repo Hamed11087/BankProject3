@@ -125,14 +125,25 @@
     <ClInclude Include="clsTransfersLogScreen.h">
       <Filter>Header Files\TransactionsProgram</Filter>
     </ClInclude>
-    <ClInclude Include="InterfaceCommunication.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="clsCurrency.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\CurrencyProgram</Filter>
     </ClInclude>
     <ClInclude Include="clsCurrencyMainScreen.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\CurrencyProgram</Filter>
     </ClInclude>
+    <ClInclude Include="InterfaceCommunication.h">
+      <Filter>Header Files\CurrencyProgram</Filter>
+    </ClInclude>
+    <ClInclude Include="clsListCurrencies.h">
+      <Filter>Header Files\CurrencyProgram</Filter>
+    </ClInclude>
+    <ClInclude Include="clsFindCurrencyScreen.h">
+      <Filter>Header Files\CurrencyProgram</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="BankProject2.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

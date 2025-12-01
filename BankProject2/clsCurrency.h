@@ -208,6 +208,12 @@ public:
 		return (!C1.IsEmpty());
 	}
 
+	static bool IsCurrencyExistByCountry(string CurrecnyCountry)
+	{
+		clsCurrency C1 = clsCurrency::FindByCountry(CurrecnyCountry);
+		return (!C1.IsEmpty());
+	}
+
 	static vector<clsCurrency> GetCurrenciesList()
 	{
 		return _LoadCrrencysDataFromFile();
