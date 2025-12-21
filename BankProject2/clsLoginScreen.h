@@ -8,7 +8,7 @@
 #include "Global.h"
 #include "clsInputValidate.h"
 #include "clsRegisterLogins.h" 
-
+#include "clsTermsOfUse.h"
 
 class clsLoginScreen :protected clsScreen
 {
@@ -53,7 +53,7 @@ private:
 
 		} while (LoginFaild);
 		
-		//clsUtil::SendEmail("Greeting " + CurrentUser.FullName(), "We want to thank you to joining us!", CurrentUser.Email);
+		//clsTermsOfUse::ShowTermsOfUse();
 		//clsRegisterLogins::_SaveUsersRegisterLoginsToFile(CurrentUser); 
 		CurrentUser.RegisterLogIn();
 		clsMainScreen::ShowMainMenue();

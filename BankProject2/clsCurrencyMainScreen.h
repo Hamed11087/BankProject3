@@ -8,6 +8,8 @@
 #include "clsInputValidate.h"
 #include "clsListCurrencies.h"
 #include "clsFindCurrencyScreen.h"
+#include "clsUpdateRateScreen.h"
+#include "clsCurrencyCalculatorScreen.h"
 
 class clsCurrencyMainScreen: protected clsScreen
 {
@@ -47,12 +49,14 @@ private:
 
 	static void _ShowUpdateRate()
 	{
-		cout << "Update Curriencies Screen Will Be Here\n";
+		clsUpdateRateScreen::ShowUpdateRateScreen();
+		//cout << "Update Curriencies Screen Will Be Here\n";
 	}
 
 	static void _ShowCurrencyCalculator()
 	{
-		cout << "Curriencies Calculator Screen Will Be Here\n";
+		clsCurrencyCalculatorScreen::ShowCurrecncyCalculatorScreen(); 
+		//cout << "Curriencies Calculator Screen Will Be Here\n";
 	}
 
 	
@@ -91,7 +95,7 @@ private:
 		}
 		case enMainMenueOptions::eMainMenue:
 		{
-		
+			
 		}
 
 
